@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/register", { username, password });
+      const response = await axios.post("https://book-app-backend-pylt.onrender.com/register", { username, password });
       alert(response.data.message); 
       navigate("/login");
     } catch (error) {
