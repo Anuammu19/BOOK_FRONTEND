@@ -108,7 +108,7 @@ export const Home = () => {
           <>
           <h1 style={{ color: "black" }}>Search Books</h1>
             <input className="search-input" type='text' placeholder='Search Book' onChange={handleChange} /><button type="submit">Search</button>
-          <Slides/>
+        
           </>
         )}
       </form>
