@@ -3,11 +3,11 @@ import Axios from 'axios';
 import { useCookies } from 'react-cookie';
 import "./home.css";
 import { useGetUserID } from '../hooks/useGetUserID';
-
+//import Slides from "../components/slides/Slides"
 
 export const Home = () => {
   const [book, setBook] = useState("");
-  const apiKey = "AIzaSyBeedcFxpMwt1qxq4odlLYJPWltMqY0pSw";
+  const apiKey = "AIzaSyDQjiZvxbH-eM_jqpmYltSlHFOcXbcIpkk";
   const [searchs, setSearch] = useState([]);
   const [savedBooks, setSavedBooks] = useState([]);
   const [cookies] = useCookies(["access_token"]);
@@ -15,7 +15,7 @@ export const Home = () => {
   
   useEffect(() => {
     if (userID) {
-      Axios.get(`https://book-app-backend-pylt.onrender.com/book/books/${userID}`)
+      Axios.get(`http://localhost:3001/book/books/${userID}`)
         .then((res) => {
           setSavedBooks(res.data.savedBooks);
         })
@@ -83,7 +83,7 @@ export const Home = () => {
       imageLink,
     };
 
-    Axios.put(`https://book-app-backend-pylt.onrender.com/book/savedbooks/${userID}`, newBook)
+    Axios.put(`http://localhost:3001/book/savedbooks/${userID}`, newBook)
       .then(res => {
         console.log('Book saved successfully');
         setSavedBooks(prevBooks => [...prevBooks, newBook]);
@@ -108,7 +108,7 @@ export const Home = () => {
           <>
           <h1 style={{ color: "black" }}>Search Books</h1>
             <input className="search-input" type='text' placeholder='Search Book' onChange={handleChange} /><button type="submit">Search</button>
-         
+          <Slides/>
           </>
         )}
       </form>
