@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { useCookies } from 'react-cookie';
 import "./home.css";
 import { useGetUserID } from '../hooks/useGetUserID';
-//import Slides from "../components/slides/Slides"
+
 
 export const Home = () => {
   const [book, setBook] = useState("");
@@ -15,7 +15,7 @@ export const Home = () => {
   
   useEffect(() => {
     if (userID) {
-      Axios.get(`http://localhost:3001/book/books/${userID}`)
+      Axios.get(`https://book-app-backend-pylt.onrender.com/book/books/${userID}`)
         .then((res) => {
           setSavedBooks(res.data.savedBooks);
         })
@@ -83,7 +83,7 @@ export const Home = () => {
       imageLink,
     };
 
-    Axios.put(`http://localhost:3001/book/savedbooks/${userID}`, newBook)
+    Axios.put(`https://book-app-backend-pylt.onrender.com/book/savedbooks/${userID}`, newBook)
       .then(res => {
         console.log('Book saved successfully');
         setSavedBooks(prevBooks => [...prevBooks, newBook]);
